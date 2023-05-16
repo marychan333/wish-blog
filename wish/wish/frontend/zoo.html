@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container" id="box">
+
+    </div>
+</body>
+</html>
+<script>
+    //doc https://zoo-animal-api.herokuapp.com/
+    zoo();
+    function zoo() {
+        let html = ``;
+        $.ajax({
+            url: 'https://zoo-animal-api.herokuapp.com/animals/rand/10',
+            method: 'get',
+            success: function (data) { // 请求成功的回调函数 arg后台返回的数据结果
+                $.each(data, function (k, v) {
+                    html += `
+                 <div class="col-md-3" style="margin-top: 50px;">
+                    <img  style="height: 300px;width: 100%;" src="${v.image_link}" alt="..." class="img-responsive">
+                    <p class="bg-primary">animal_name: ${v.name}</p>
+                    <p class="bg-success">animal_type :${v.animal_type}</p>
+                </div>`;
+                })
+                $('#box').html(html);
+
+            }
+        })
+    }
+</script>

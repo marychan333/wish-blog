@@ -1,0 +1,468 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+
+<!-- login Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="Account">UserName</label>
+                        <input type="text" maxlength="20" class="form-control" id="laccount" placeholder="UserName">
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input type="password" class="form-control" id="lpassword" placeholder="Password">
+                    </div>
+                    <div style="display:flex;justify-content: center;">
+                        <button id="doligin" type="submit" class="btn btn-success">Login</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+
+<!--register  Modal -->
+<div class="modal fade" id="myModl_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Register</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">UserName</label>
+                        <div class="col-sm-10">
+                            <input type="text" maxlength="15" class="form-control" id="account"
+                                   placeholder="UserName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password2" placeholder="Password">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div style="display: flex;justify-content: center;">
+                            <button id="register" type="submit" class="btn btn-info">Register</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+
+<!--add  Modal -->
+<div class="modal fade" id="myModl_3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-group">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" placeholder="title" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea class="form-control" rows="3" id="infom"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div style="display: flex;justify-content: center;">
+                            <button id="add_p" type="submit" class="btn btn-info">Add</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<body>
+<img id="addimg" data-toggle="modal" src="img/add.png" style="cursor: pointer;">
+<div class="box">
+    <div class="row header">
+
+        <div class="item">
+
+            <button id="login_btn" type="button" class="btn btn-primary btn-lg"
+                    data-toggle="modal" data-target="#myModal">
+                Login
+            </button>
+
+            <button style="margin-left:20px;margin-right: 20px;" type="button" class="btn btn-primary btn-lg"
+                    data-toggle="modal" data-target="#myModl_2">
+                Register
+            </button>
+
+            <div id="my" class="btn-group" role="group" style="padding-right: 30px;display: none;">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <span id="uname"></span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="btn" id="loginout">LoginOut</li>
+                </ul>
+            </div>
+
+        </div>
+        <a style="margin-right: 100px;" href="zoo.html" class="btn  btn-success ">zoo</a>
+    </div>
+
+    <div class="content">
+
+
+    </div>
+</div>
+
+</body>
+
+
+</html>
+<script>
+    $(function () {
+        var host = 'http://lyb3.com/backend/ServiceHandler.php';
+        checkLogin();//检查登录
+        list();
+        function checkLogin() {
+            $.ajax({
+                url: host,
+                data: {
+                    method: 'checkLogin',
+                    param: {}
+                },
+                method: 'get',
+                success: function (arg) { // 请求成功的回调函数 arg后台返回的数据结果
+
+                    if (arg.code == 1) {//过期
+                        $('#login_btn').show();//显示登录按钮
+                        $('#my').hide();//隐藏退出按钮
+                    }
+                    if (arg.code == 0) {
+                        $('#login_btn').hide();//登录隐藏
+                        $('#my').show();//显示
+                        $('#uname').text(arg.data.user_name);//退出隐藏
+                    }
+
+                }
+            })
+        }
+
+
+        function list() {
+            $.ajax({
+                url: host,// 请求地址
+                data: {
+                    method: 'talk_list',
+                },
+                dataType: "json",
+                method: 'get',
+                success: function (arg) { // 请求成功的回调函数 arg后台返回的数据结果
+                    console.log(arg);
+                    let data = arg.data;
+                    let html = ``;
+                    if (!data) return;
+                    $.each(data, function (k, v) {
+                        if (v.is_ddl == 1) {
+                            html += `<div class="card card_box " style="width:300px;background-color: #cccccc;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">`;
+                        } else {
+                            html += `<div class="card card_box " style="width:300px">`;
+                        }
+                        html += `
+            <img src="img/${v.img_num}.jpg" style="width: 100%;height:160px;" alt="">
+            <div class="card-body">
+                <h5 class="card-title"  style="word-break:break-all;text-align: center;" >${v.title}</h5>
+                <p class="card-text"  style="word-break:break-all">${v.content}</p>
+                <p class="card-text"  style="word-break:break-all">${v.addtime}</p>
+                <p class="btn btn-danger dels" data-id="${v.id}" >删除</p>
+
+            </div>
+
+
+
+        </div>`;
+                    })
+
+                    $('.content').html(html);
+
+                },
+                error: function (data) {
+
+                }
+            })
+        }
+
+        $('form').submit(function () {
+            return false;
+        });
+
+
+        //退出登录
+        $('#loginout').click(function () {
+            if (confirm("are you loginout ?")) {
+                $.ajax({
+                    url: host,  // 请求地址
+                    data: {
+                        method: 'loginOut',
+                        param: {}
+                    },
+                    method: 'post',
+                    success: function (arg) { // 请求成功的回调函数 arg后台返回的数据结果
+                        console.log(arg);
+                        if (arg.code == 1) {
+                            alert(arg.msg)
+                            return false;
+                        }
+                        if (arg.code == 0) {
+
+                            location.reload(true);
+                        }
+
+                    }
+                })
+            } else {
+                return false;
+            }
+        })
+
+
+        //登录
+        $('#doligin').click(function () {
+            let account = $('#laccount').val();
+            let password = $('#lpassword').val();
+            let password2 = $('#lpassword2').val();
+            if (account == '') {
+                alert('userName must write ');
+                return false;
+            }
+            if (password == '') {
+                alert('password must write ');
+                return false;
+            }
+
+            $.ajax({
+                url: host,  // 请求地址
+                data: {
+                    method: 'login',
+                    param: {
+                        account: account,
+                        password: password
+                    }
+                },
+                method: 'post',
+                success: function (arg) { // 请求成功的回调函数 arg后台返回的数据结果
+                    if (arg.code == 1) {
+                        alert(arg.msg)
+                        return false;
+                    }
+                    if (arg.code == 0) {
+                        location.reload(true);
+                    }
+                }
+            })
+        })
+
+        //register
+        $('#register').click(function () {
+            let account = $('#account').val();
+            let password = $('#password').val();
+            let password2 = $('#password2').val();
+
+            if (account == '') {
+                alert('account must write ');
+                return;
+            }
+            if (password == '') {
+                alert('password must write ');
+                return;
+            }
+            if (password != password2) {
+                alert('Two passwords are inconsistent');
+                return;
+            }
+
+            $.ajax({
+                url: host,  // 请求地址
+                data: {
+                    method: 'register',
+                    param: {
+                        account, // 把用户数据提交给后台的key
+                        password,
+                    }
+
+                },
+                method: 'post',
+                success: function (arg) { // 请求成功的回调函数 arg后台返回的数据结果
+                    console.log(arg);
+                    if (arg.code == 1) {
+                        alert(arg.msg)
+                        return;
+                    }
+                    if (arg.code == 0) {
+                        alert('register success');
+                        location.reload(true);
+                    }
+
+                }
+            })
+        })
+
+        //新增话题
+        $('#add_p').click(function () {
+            let title = $('#title').val();//标题
+            let content = $('#infom').val();//内容
+            if (title == '') {
+                alert('title must write ');
+                return false;
+            }
+            if (infom == '') {
+                alert('content must write ');
+                return false;
+            }
+
+            $.ajax({
+                url: host,// 请求地址
+                dataType: "json",
+                data: {
+                    method: 'addTalk',
+                    param: {
+                        content: content,
+                        title: title,
+                    }
+
+
+                },
+                method: 'post',
+                success: function (arg) { // 请求成功的回调函数 arg后台返回的数据结果
+                    console.log(arg);
+                    if (arg.code == 1) {
+                        alert(arg.msg)
+                        return false;
+                    }
+                    if (arg.code == 0) {
+                        alert('add success');
+                        location.reload(true);
+                    }
+
+                }
+            })
+        })
+
+
+        //must be login for do it
+        $('#addimg').click(function () {
+            //需要先登录
+            $.ajax({
+                url: host,
+                data: {
+                    method: 'checkLogin',
+                    param: {}
+                },
+                method: 'get',
+                success: function (arg) { // 请求成功的回调函数 arg后台返回的数据结果
+                    console.log(arg);
+                    if (arg.code == 1) {//过期
+                        alert('please login');
+                    }
+                    if (arg.code == 0) {
+                        $('#myModl_3').modal('show');
+                    }
+
+                }
+            })
+
+
+        })
+
+        $('.content').on('click','.dels',function (){
+            let id = $(this).data('id');
+            if (confirm("are you delete ?")) {
+                $.ajax({
+                    url: host,  // 请求地址
+                    data: {
+                        method: 'del',
+                      
+                        param: {
+                            id,
+
+                        }
+                    },
+                    method: 'post',
+                    success: function (arg) { // 请求成功的回调函数 arg后台返回的数据结果
+                        console.log(arg);
+                        if (arg.code == 1) {
+                            alert(arg.msg)
+                            return false;
+                        }
+                        if (arg.code == 0) {
+                            location.reload(true);
+                        }
+
+                    }
+                })
+            } else {
+                return false;
+            }
+        })
+    })
+
+
+</script>
